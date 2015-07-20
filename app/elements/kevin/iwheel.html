@@ -1,0 +1,113 @@
+<dom-module id="iwheel">
+
+<style shim-shadowdom>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F0F0F0;
+        }
+
+        core-header-panel {
+            float: left;
+            width: 360px;
+            height: 400px;
+            margin: 5px;
+        }
+
+        core-header-panel[mode=cover]::shadow #mainContainer {
+            left: 70px;
+        }
+
+        .core-header {
+            height: 60px;
+            line-height: 60px;
+            font-size: 18px;
+            padding: 0 10px;
+            background-color: #4F7DC9;
+            color: #FFF;
+            transition: height 0.2s;
+        }
+
+        .core-header.tall {
+            height: 180px;
+        }
+
+        .core-header.medium-tall {
+            height: 120px;
+        }
+
+        .content {
+            height: 2000px;
+            background: linear-gradient(rgb(214, 227, 231), lightblue);
+        }
+
+</style>
+
+<core-header-panel>
+    <div class="core-header">
+        shape <button id="random">random</button>
+    </div>
+    <div class="content">
+        <div id="container"></div>
+    </div>
+</core-header-panel>
+
+
+<script>
+    var width = window.innerWidth;
+    var height = window.innerHeight - 25;
+
+    // first we need Konva core things: stage and layer
+    var stage = new Konva.Stage({
+        container : 'container',
+        width     : width,
+        height    : height
+    });
+
+    var layer = new Konva.Layer({
+//            draggable    : true
+    });
+    stage.add(layer);
+
+
+    // then we are going to draw into special canvas element
+    var canvas = document.createElement('canvas');
+    canvas.width  = stage.width()  / 2;
+    canvas.height = stage.height() / 2;
+
+    var wheel = new IWheel({
+        fill        : 'blue',
+        stroke      : 'red',
+        strokeWidth :   0.5,
+        prime       : 109,
+        x           : 170,
+        y           : 170,
+        zoom        : 150,
+        step        : 67,
+        thetaX      : 2,
+        exp         : 1
+    });
+    layer.add(wheel);
+
+
+    stage.draw();
+//    var angularSpeed = 80;
+//    var anim = new Konva.Animation(function(frame) {
+//        var angleDiff = frame.timeDiff * angularSpeed / 1000;
+////        wedge.rotate(angleDiff);
+//        wheel.rotate(angleDiff);
+//    }, layer);
+//
+//    anim.start();
+
+    var randomButton = document.getElementById('random');
+    randomButton.addEventListener('click', function() {
+        wheel.roll();
+        stage.draw();
+    });
+
+</script>
+
+</dom-module>

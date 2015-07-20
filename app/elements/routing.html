@@ -24,8 +24,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/users/:name', function (data) {
+      data.params.fullName = 'Kevin Irlen';
+
       app.route = 'user-info';
       app.params = data.params;
+
+      app.params.fullName = 'Kevin Irlen';
     });
 
     page('/contact', function () {
