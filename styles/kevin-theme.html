@@ -1,0 +1,83 @@
+<style is="custom-style">
+
+paper-header-panel {
+    /*float: left;*/
+    min-width: 440px;
+    height: 500px;
+    margin: 12px;
+@apply(--shadow-elevation-2dp);
+}
+
+.paper-header {
+    height: 60px;
+    font-size: 16px;
+    line-height: 60px;
+    padding: 0 10px;
+    color: white;
+    transition: height 0.2s;
+}
+
+.paper-header.tall {
+    height: 220px;
+}
+
+.paper-header.medium-tall {
+    height: 100px;
+    line-height: 50px;
+}
+
+.content {
+    height: 1500px;
+}
+
+.cover {
+    margin: 60px;
+}
+
+.blue .paper-header {
+    background-color: var(--paper-light-blue-500);
+}
+.red .paper-header {
+    background-color: var(--paper-red-500);
+}
+.orange .paper-header {
+    background-color: var(--paper-amber-500);
+}
+.green .paper-header {
+    background-color: var(--paper-green-500);
+}
+.cyan .paper-header {
+    background-color: var(--paper-cyan-500);
+}
+.lime .paper-header {
+    background-color: var(--paper-lime-500);
+}
+.pink .paper-header {
+    background-color: var(--paper-pink-a200);
+}
+
+/* TODO: replace these with background: linear-gradient(white, var(...))
+ when custom properties allow it */
+
+.blue .content {
+    background: linear-gradient(white, #b3e5fc);
+}
+.red .content {
+    background: linear-gradient(white, #ffcdd2);
+}
+.orange .content {
+    background: linear-gradient(white, #ffecb3);
+}
+.green .content {
+    background: linear-gradient(white, #c8e6c9);
+}
+.cyan .content {
+    background: linear-gradient(white, #b2ebf2);
+}
+.lime .content {
+    background: linear-gradient(white, #f0f4c3);
+}
+.pink .content {
+    background: linear-gradient(white, #f8bbd0);
+}
+</style>
