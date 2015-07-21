@@ -6,8 +6,10 @@
         <div class="center horizontal layout">
             <div>Step</div>
             <paper-slider id="iw-step-slider" class="blue" value="67" max="180" step=".5" editable></paper-slider>
+            <div>Multiplier</div>
+            <paper-slider id="iw-theta-x-slider" class="blue" value="2" max="20" step=".5" editable></paper-slider>
         </div>
-        <div id="iw-container"></div>
+        <div id="[[tag]]"></div>
     </div>
 </template>
 
@@ -21,14 +23,24 @@
         wheel: null,
 
         listeners: {
-            'iw-step-slider.immediate-value-change' : 'stepSliderChanged',
-            'iw-step-slider.change'                 : 'stepSliderChanged'
+            'iw-step-slider.immediate-value-change'    : 'stepSliderChanged',
+            'iw-step-slider.change'                    : 'stepSliderChanged',
+            'iw-theta-x-slider.immediate-value-change' : 'thetaXSliderChanged',
+            'iw-theta-x-slider.change'                 : 'thetaXSliderChanged'
         },
 
         stepSliderChanged: function(event) {
             var newValue = event.currentTarget.immediateValue;
 
             this.wheel.attrs.step = newValue;
+            this.stage.draw();
+
+        },
+
+        thetaXSliderChanged: function(event) {
+            var newValue = event.currentTarget.immediateValue;
+
+            this.wheel.attrs.thetaX = newValue;
             this.stage.draw();
 
         },
@@ -40,7 +52,7 @@
 
             // first we need Konva core things: stage and layer
             this.stage = new Konva.Stage({
-                container : 'iw-container',
+                container : this.tag, //'iw-container-',
                 width     : width,
                 height    : height
             });
