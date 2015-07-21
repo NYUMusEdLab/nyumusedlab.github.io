@@ -3,7 +3,11 @@
 
 <template>
     <div class="iw-content">
-        <div id="iw-container">Hello</div>
+        <div class="center horizontal layout">
+            <div>Step</div>
+            <paper-slider id="iw-step-slider" class="blue" value="183" max="1000" editable></paper-slider>
+        </div>
+        <div id="iw-container"></div>
     </div>
 </template>
 
@@ -12,13 +16,29 @@
     Polymer({
         is: 'iw-wheelgraph',
 
+
+        stage: null,
+        wheel: null,
+
+        listeners: {
+            'iw-step-slider.immediate-value-change' : 'stepSliderChanged'
+        },
+
+        stepSliderChanged: function(event) {
+            var newValue = event.currentTarget.immediateValue;
+
+            this.wheel.attrs.step = newValue;
+            this.stage.draw();
+
+        },
+
         attached: function() {
 
             var width = 500; // window.innerWidth;
             var height = 500; //window.innerHeight - 25;
 
             // first we need Konva core things: stage and layer
-            var stage = new Konva.Stage({
+            this.stage = new Konva.Stage({
                 container : 'iw-container',
                 width     : width,
                 height    : height
@@ -27,7 +47,7 @@
             var layer = new Konva.Layer({
 //            draggable    : true
             });
-            stage.add(layer);
+            this.stage.add(layer);
 
 
 //            // then we are going to draw into special canvas element
@@ -35,7 +55,7 @@
 //            canvas.width  = stage.width()  / 2;
 //            canvas.height = stage.height() / 2;
 
-            var wheel = new IWheel({
+            this.wheel = new IWheel({
                 fill        : 'blue',
                 stroke      : 'red',
                 strokeWidth :   0.5,
@@ -43,14 +63,14 @@
                 x           : 170,
                 y           : 170,
                 zoom        : 150,
-                step        : 67,
+                step        : 57,
                 thetaX      : 2,
                 exp         : 1
             });
-            layer.add(wheel);
+            layer.add(this.wheel);
 
 
-            stage.draw();
+            this.stage.draw();
         }
 
 //    var angularSpeed = 80;
