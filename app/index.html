@@ -1,13 +1,3 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <!doctype html>
 <html lang="">
 
@@ -49,6 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <script src="bower_components/konva/konva.js"></script>
+  <script src="elements/kevin/js/iwheel.js"></script>
   <!-- endbuild -->
 
   <!-- will be replaced with elements/elements.vulcanized.html -->
@@ -162,10 +153,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                               Figure 1<br/>
                               <div class="center horizontal layout">
                                   <div>Step</div>
-                                  <paper-slider class="green" value="183" max="255" editable></paper-slider>
+                                  <paper-slider class="blue" value="183" max="1000" editable></paper-slider>
                               </div>
                           </div>
-                          <div class="content">All the cool stuff</div>
+                          <div class="content">
+                              All the cool stuff
+                              <iw-wheelgraph><div class="iw-wheelgraph"></div></iw-wheelgraph>
+                          </div>
                       </paper-header-panel>
                       <paper-header-panel mode="waterfall-tall" class="blue">
                           <div class="paper-header">Figure 2</div>

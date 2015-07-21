@@ -1,0 +1,76 @@
+<dom-module id="iw-wheelgraph">
+
+
+<template>
+    <div class="iw-content">
+        <div id="iw-container">Hello</div>
+    </div>
+</template>
+
+
+<script>
+    Polymer({
+        is: 'iw-wheelgraph',
+
+        attached: function() {
+
+            var width = 500; // window.innerWidth;
+            var height = 500; //window.innerHeight - 25;
+
+            // first we need Konva core things: stage and layer
+            var stage = new Konva.Stage({
+                container : 'iw-container',
+                width     : width,
+                height    : height
+            });
+
+            var layer = new Konva.Layer({
+//            draggable    : true
+            });
+            stage.add(layer);
+
+
+//            // then we are going to draw into special canvas element
+//            var canvas = document.createElement('canvas');
+//            canvas.width  = stage.width()  / 2;
+//            canvas.height = stage.height() / 2;
+
+            var wheel = new IWheel({
+                fill        : 'blue',
+                stroke      : 'red',
+                strokeWidth :   0.5,
+                prime       : 109,
+                x           : 170,
+                y           : 170,
+                zoom        : 150,
+                step        : 67,
+                thetaX      : 2,
+                exp         : 1
+            });
+            layer.add(wheel);
+
+
+            stage.draw();
+        }
+
+//    var angularSpeed = 80;
+//    var anim = new Konva.Animation(function(frame) {
+//        var angleDiff = frame.timeDiff * angularSpeed / 1000;
+////        wedge.rotate(angleDiff);
+//        wheel.rotate(angleDiff);
+//    }, layer);
+//
+//    anim.start();
+
+
+
+
+//    var randomButton = document.getElementById('random');
+//    randomButton.addEventListener('click', function() {
+//        wheel.roll();
+//        stage.draw();
+    });
+
+</script>
+
+</dom-module>
