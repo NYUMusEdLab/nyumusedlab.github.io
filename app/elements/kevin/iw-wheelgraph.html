@@ -47,8 +47,8 @@
 
         attached: function() {
 
-            var width = 500; // window.innerWidth;
-            var height = 500; //window.innerHeight - 25;
+            var width = 440; // window.innerWidth;
+            var height = 440; //window.innerHeight - 25;
 
             // first we need Konva core things: stage and layer
             this.stage = new Konva.Stage({
@@ -58,7 +58,7 @@
             });
 
             var layer = new Konva.Layer({
-//            draggable    : true
+                draggable    : true
             });
             this.stage.add(layer);
 
@@ -72,9 +72,8 @@
                 fill        : 'blue',
                 stroke      : 'red',
                 strokeWidth :   0.5,
-                prime       : 109,
-                x           : 170,
-                y           : 170,
+                x           : 235,
+                y           : 200,
                 zoom        : 150,
                 step        : 57,
                 thetaX      : 2,
